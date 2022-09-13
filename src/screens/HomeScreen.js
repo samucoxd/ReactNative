@@ -21,16 +21,6 @@ const HomeScreen = () => {
 
 	const {addTask,deleteTask,editTask,updateAdd,addNew,task,tasks} = useTask()
 
-	useEffect(()=>{
-		
-		firebase.firestore().collection('task').add({
-			taskName: 'Grabar Video',
-			date: '11/09/2022',
-		}).then(task => {
-			alert('almacenado con exito')
-		})
-	})
-
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
 
@@ -58,6 +48,7 @@ const HomeScreen = () => {
 			<View>
 				<FlatList
 					data = { tasks }
+					keyExtractor = {(item) => item.id}
 					renderItem = { ({item, index}) => <TaskItem task={item} onPress={() => deleteTask(index)}/>}
 					ListHeaderComponent ={()=><ListHeader/>}
 					ItemSeparatorComponent = {()=><View style={{marginVertical:4,}}/>}

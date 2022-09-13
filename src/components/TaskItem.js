@@ -5,7 +5,7 @@ const TaskItem = ({onPress, task}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={onPress}/>
-      <Text style={styles.text}>{task}</Text>
+      <Text style={styles.text}>{task.data().task}</Text>
     </View>
   )
 }
