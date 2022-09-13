@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1080770830830",
+    "project_id": "diplomado6-afd81",
+    "storage_bucket": "diplomado6-afd81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080770830830:android:0d008ed1b17d6f8fc32eff",
+        "android_client_info": {
+          "package_name": "com.appproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080770830830-8net17ljsn9i14scuvke1k1pkgp7p80i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrK_trAVlVi1KOWksv1yr3gcE2TCVRDTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080770830830-8net17ljsn9i14scuvke1k1pkgp7p80i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
