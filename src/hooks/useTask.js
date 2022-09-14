@@ -18,7 +18,9 @@ const useTask = () => {
 		firebase.firestore().collection('tasks').onSnapshot(querySnapshot => {
 			setTasks([])
 			querySnapshot.forEach(doc => {
-				setTasks(currentTasks => [...currentTasks, doc])
+				const docdata = doc.data()
+				if(docdata.active) setTasks(currentTasks => [...currentTasks, doc])
+				
 			})
 		})
 	}
@@ -27,7 +29,8 @@ const useTask = () => {
 	const addTask = () => {
 
 		firebase.firestore().collection('tasks').add({
-			task
+			task,
+			active: true,
 		}).then(response => {
 			//setTasks(currentTasks => [...currentTasks, task])
 			setTask('')
@@ -42,7 +45,10 @@ const useTask = () => {
 		const selectedTask = tasks[index]
 
 		try {
-			firebase.firestore().collection('tasks').doc(selectedTask.id).delete()	
+			//firebase.firestore().collection('tasks').doc(selectedTask.id).delete()	
+			firebase.firestore().collection('tasks').doc(selectedTask.id).update({
+				active: false,
+			})	
 		} catch (e) {
 			console.log(e)
 		}
