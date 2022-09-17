@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 
   addButtonLocator: {
     right: 10,
-    top: screenHeight - 250,
+    top: screenHeight - 300,
     position: 'absolute',
   },
 
