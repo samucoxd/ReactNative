@@ -212,10 +212,14 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            // storeFile file('debug.keystore')
+            // storePassword 'android'
+            // keyAlias 'androiddebugkey'
+            // keyPassword 'android'
+						storeFile file('my-upload-key.keystore')
+            storePassword 'samuco'
+            keyAlias 'my-key-alias'
+            keyPassword 'samuco'
         }
     }
     buildTypes {

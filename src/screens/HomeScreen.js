@@ -6,24 +6,22 @@ import {
   Dimensions,
   TouchableOpacity,
   TextInput,
-	FlatList,
+  FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import TaskItem from '../components/TaskItem';
 import ListHeader from '../components/ListHeader';
 import useTask from '../hooks/useTask';
-import { firebase } from '@react-native-firebase/firestore';
-
+import {firebase} from '@react-native-firebase/firestore';
 
 const screenHeight = Dimensions.get('screen').height;
 
 const HomeScreen = () => {
-
-	const {addTask,deleteTask,editTask,updateAdd,addNew,task,tasks} = useTask()
+  const {addTask, deleteTask, editTask, updateAdd, addNew, task, tasks} =
+    useTask();
 
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
-
       {addNew && (
         <View>
           <TextInput
@@ -33,7 +31,9 @@ const HomeScreen = () => {
             value={task}
           />
           <View style={{marginVertical: 10, flexDirection: 'row'}}>
-            <TouchableOpacity style={[styles.button, styles.acceptButton]} onPress={addTask}>
+            <TouchableOpacity
+              style={[styles.button, styles.acceptButton]}
+              onPress={addTask}>
               <Text style={styles.buttonText}>Agregar</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -45,17 +45,18 @@ const HomeScreen = () => {
         </View>
       )}
 
-			<View>
-				<FlatList
-					data = { tasks }
-					keyExtractor = {(item) => item.id}
-					renderItem = { ({item, index}) => <TaskItem task={item} onPress={() => deleteTask(index)}/>}
-					ListHeaderComponent ={()=><ListHeader/>}
-					ItemSeparatorComponent = {()=><View style={{marginVertical:4,}}/>}
-				/>
-			</View>
+      <View>
+        <FlatList
+          data={tasks}
+          keyExtractor={item => item.id}
+          renderItem={({item, index}) => (
+            <TaskItem task={item} onPress={() => deleteTask(index)} />
+          )}
+          ListHeaderComponent={() => <ListHeader />}
+          ItemSeparatorComponent={() => <View style={{marginVertical: 4}} />}
+        />
 
-
+      </View>
 
       <View style={styles.addButtonLocator}>
         <TouchableOpacity

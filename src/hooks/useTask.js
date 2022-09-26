@@ -9,18 +9,31 @@ const useTask = () => {
 
 	const [tasks, setTasks] = useState([]);
 
+	const [realizadas, setRealizadas] = useState([]);
+
 	useEffect(()=>{
 		getFirestoreData()
+		getItemRealizadasData()
 	},[])
 
 
-	const getFirestoreData= () => {
+	const getFirestoreData = () => {
 		firebase.firestore().collection('tasks').onSnapshot(querySnapshot => {
 			setTasks([])
 			querySnapshot.forEach(doc => {
 				const docdata = doc.data()
 				if(docdata.active) setTasks(currentTasks => [...currentTasks, doc])
 				
+			})
+		})
+	}
+
+	const getItemRealizadasData = () => {
+		firebase.firestore().collection('tasks').onSnapshot(querySnapshot => {
+			setRealizadas([])
+			querySnapshot.forEach(doc => {
+				const docdata = doc.data()
+				if(docdata.active === false) setRealizadas(currentTasks => [...currentTasks, doc])
 			})
 		})
 	}
@@ -65,7 +78,7 @@ const useTask = () => {
 	}
 
 	return {
-		addTask,deleteTask,editTask,updateAdd,addNew,task,tasks
+		addTask,deleteTask,editTask,updateAdd,addNew,task,tasks,realizadas
 	}
 }
 
